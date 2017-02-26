@@ -22,12 +22,13 @@
   "homepage": "https://github.com/udalrich/bestiaryFilter#readme",
   "dependencies": {
     "react": "^15.4.2",
+    "react-dom": "^15.4.2",
     "redux": "^3.6.0"
   },
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-preset-es2015": "^6.22.0",
-    "babel-preset-stage-0": "^6.22.0",
+    "babel-preset-react": "^6.23.0",
     "babelify": "^7.3.0",
     "browserify": "^14.1.0",
     "fs": "0.0.1-security",

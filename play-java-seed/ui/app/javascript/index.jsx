@@ -7,5 +7,5 @@ const Page = () => (
     </div>
 );
 
-ReactDom.render(<Page>,
+ReactDom.render(<Page />,
                 document.getElementById("main"));
