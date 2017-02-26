@@ -13,3 +13,4 @@ server.pid
 dist/
 .cache
 node_modules
+*~

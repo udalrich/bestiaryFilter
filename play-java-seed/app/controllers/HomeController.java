@@ -18,4 +18,7 @@ public class HomeController extends Controller {
         return ok(views.html.index.render());
     }
 
+  public Result redirectRoot() {
+    return redirect("/ui/index.html");
+  }
 }

@@ -14,7 +14,7 @@ var mkdirp = require('mkdirp')
 
 // add custom browserify options here
 var customOpts = {
-  entries: ['./app/javascript/index.jsx'],
+  entries: ['./app/assets/javascript/index.jsx'],
     debug: true,
     cache: {},
     packageCache: {},
@@ -28,7 +28,7 @@ var browserify = browserify(opts)
                  });
 var watch = watchify(browserify);
 
-var outputDir = '../target/gulp/app/javascript'
+var outputDir = '../target/gulp/app/assets/javascript'
 mkdirp.sync(outputDir);
 
 

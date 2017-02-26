@@ -22,8 +22,14 @@
   "homepage": "https://github.com/udalrich/bestiaryFilter#readme",
   "dependencies": {
     "react": "^15.4.2",
+    "react-bootstrap": "^0.30.7",
+    "react-bootstrap-table": "^3.0.0",
     "react-dom": "^15.4.2",
-    "redux": "^3.6.0"
+    "react-redux": "^5.0.3",
+    "react-redux-form": "^1.7.0",
+    "redux": "^3.6.0",
+    "redux-actions": "^1.2.2",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-plugin-transform-object-rest-spread": "^6.23.0",

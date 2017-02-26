@@ -6,7 +6,13 @@
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
+GET        /routes                     controllers.Routing.routes
+GET        /jsroutes.js                controllers.Routing.jsRoutes(varName ?= "jsRoutes")
+
 # Gulp files
-GET     /           com.github.mmizutani.playgulp.GulpAssets.redirectRoot("/ui/")
-GET     /ui         com.github.mmizutani.playgulp.GulpAssets.index
+#GET     /           com.github.mmizutani.playgulp.GulpAssets.redirectRoot("/ui/")
+GET     /ui/index.html  controllers.HomeController.index
+#GET     /           com.github.mmizutani.playgulp.GulpAssets.redirectRoot()
+GET     /           controllers.HomeController.redirectRoot
+#GET     /ui         com.github.mmizutani.playgulp.GulpAssets.index
 ->      /ui/        gulp.Routes
