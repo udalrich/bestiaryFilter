@@ -1,0 +1,44 @@
+{
+  "name": "bestiary-filter",
+  "version": "1.0.0",
+  "description": "Pathfinder bestiary summary with filtering",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/udalrich/bestiaryFilter.git"
+  },
+  "keywords": [
+    "pathfinder",
+    "playframework"
+  ],
+  "author": "Troy Daniels",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/udalrich/bestiaryFilter/issues"
+  },
+  "homepage": "https://github.com/udalrich/bestiaryFilter#readme",
+  "dependencies": {
+    "react": "^15.4.2",
+    "redux": "^3.6.0"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "babelify": "^7.3.0",
+    "browserify": "^14.1.0",
+    "fs": "0.0.1-security",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-cli": "^1.2.2",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-util": "^3.0.8",
+    "lodash.assign": "^4.2.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.9.0"
+  }
+}
