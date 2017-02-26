@@ -4,9 +4,12 @@ import ReactDom from 'react-dom'
 import BestiaryTable from './BestiaryTable.jsx'
 import DataStore from './DataStore.jsx'
 
-const Page = () => (
-    <BestiaryTable state={DataStore.getState()} />
+const Page = ({state}) => (
+    <BestiaryTable state={state.monsters} />
 );
 
-ReactDom.render(<Page />,
-                document.getElementById("main"));
+const render = () => ReactDom.render(<Page state={DataStore.getState()} />,
+                                     document.getElementById("main"));
+
+DataStore.subscribe(render);
+render();

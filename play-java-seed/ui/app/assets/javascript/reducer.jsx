@@ -12,7 +12,10 @@ import {
 import { handleActions } from 'redux-actions'
 
 const initState = {
-    monsterData: []
+    monsterData: {
+        headers: [],
+        data: []
+    }
 }
 
 const reducer = handleActions(

@@ -9,7 +9,9 @@ scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(
   filters,
-  "org.apache.commons" % "commons-csv" % "1.4"
+  "org.apache.commons" % "commons-csv" % "1.4",
+  "org.apache.commons" % "commons-io" % "1.3.2",
+  "org.projectlombok" % "lombok" % "1.16.14"
 )
 
 
