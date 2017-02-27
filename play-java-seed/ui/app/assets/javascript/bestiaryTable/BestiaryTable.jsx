@@ -2,7 +2,7 @@ import React from 'react';
 import { BootstrapTable, TableHeaderColumn }  from 'react-bootstrap-table'
 
 import 'whatwg-fetch'
-import store from './DataStore.jsx'
+import store from '../DataStore.jsx'
 import ActionCreator from './ActionCreator.jsx'
 
 function handleErrors(response) {
@@ -21,9 +21,13 @@ fetch('/monsterData')
     .catch(err => console.error("Error getting data", err))
 
 function prettify(label) {
-    return label.
-               split(/(?=[A-Z])/).
-               join(' ');
+    return label.split(/([A-Z]+[^A-Z]*)/).
+                 join(' ').
+                 replace('_', ' ')
+
+    /* split(/(?=[A-Z]+)/).
+     *              join(' ').
+     *              replace('_', ' ');*/
 }
 
 function buildColumns(headers) {
