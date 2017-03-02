@@ -63,19 +63,22 @@ function dataFormat(cell, row, extraData, rowIdx) {
 
 }
 
-function buildColumns(headers) {
+function buildColumns(headers, selectedColumns) {
     console.log(`Mapping ${headers.length} columns`);
-    return headers.
-    map(label =>
-        <TableHeaderColumn
-            key={label}
-            dataField={label}
-            dataAlign="left"
-            dataFormat={dataFormat}
-            dataSort={true}
-        >
-            {prettify(label)}
-        </TableHeaderColumn>)
+    console.log('selectedColumns', selectedColumns);
+
+    return headers
+        .filter(label => selectedColumns[label])
+        .map(label =>
+            <TableHeaderColumn
+                key={label}
+                dataField={label}
+                dataAlign="left"
+                dataFormat={dataFormat}
+                dataSort={true}
+            >
+                {prettify(label)}
+            </TableHeaderColumn>)
     console.log('Returning dummy column');
     return (
         <TableHeaderColumn dataField="none" key="1">Waiting for data</TableHeaderColumn>
@@ -83,7 +86,9 @@ function buildColumns(headers) {
 }
 
 
-export default ({state}) => {
+const BestiaryTable = ({state, selectedColumns}) => {
+    console.log('state', state);
+    console.log('selectedColumns', selectedColumns);
     if (state.monsterData.data.length > 0) {
         return <BootstrapTable data={state.monsterData.data}
                                keyField="name"
@@ -93,10 +98,18 @@ export default ({state}) => {
                                dataSort={true}
                >
             {
-                buildColumns(state.monsterData.headers)
+                buildColumns(state.monsterData.headers,
+                             selectedColumns)
             }
         </BootstrapTable>
     } else {
         return ( <div>Waiting for data...</div> )
     }
 };
+
+BestiaryTable.propTypes = {
+    state: React.PropTypes.object.isRequired,
+    selectedColumns:  React.PropTypes.object.isRequired
+}
+
+export default BestiaryTable;

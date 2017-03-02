@@ -9,14 +9,17 @@ import prettify from '../bestiaryTable/prettify.jsx'
 
 const ColumnSelect = ({monsters, store}) => (
     <Provider store={store}>
-        <Form model="selectColumns">
-            {monsters.monsterData.headers.map(header => (
-                 <label key={header}
-                        className="selectColumn">
-                     <Control.checkbox model={"." + header} />
-                     {prettify(header)}
-                 </label>
-             ))}
+        <Form model="selectColumnForm.selectColumns">
+            {monsters.monsterData.headers
+                     .sort()
+                     .map(header => (
+                         <label key={header}
+                                className="selectColumn">
+                             <Control.checkbox model={"." + header} />
+                             {prettify(header)}
+                         </label>
+                     ))
+            }
         </Form>
     </Provider>
 )

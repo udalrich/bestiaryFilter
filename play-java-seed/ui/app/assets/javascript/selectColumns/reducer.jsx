@@ -11,13 +11,16 @@ import {
 
 
 const initState = {
-    AC: true,
-    CR: false
+    Name: true,
+    Size: true,
+    CR: true,
+    Type: true
 }
 
 const reducer = combineForms({
-    selectColums: initState
-});
+    selectColumns: initState
+},
+'selectColumnForm');
 
 export default reducer;
 

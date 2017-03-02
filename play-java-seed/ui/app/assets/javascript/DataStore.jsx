@@ -10,6 +10,6 @@ import selectColumns from './selectColumns/reducer.jsx'
 export default createStore(
     combineReducers({
         monsters,
-        selectColumns
+        selectColumnForm: selectColumns
     }),
     applyMiddleware(thunk));

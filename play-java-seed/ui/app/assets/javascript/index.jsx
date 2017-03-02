@@ -8,13 +8,18 @@ import ColumnSelect from './selectColumns/ColumnSelect.jsx'
 
 import DataStore from './DataStore.jsx'
 
-const Page = ({state: { monsters }}) => (
-    <Panel>
-        <ColumnSelect monsters={monsters}
-                      store={DataStore} />
-        <BestiaryTable state={monsters} />
-    </Panel>
-);
+const Page = ({state }) => {
+    console.log('state', state);
+    return (
+        <Panel>
+            <ColumnSelect monsters={state.monsters}
+                          store={DataStore} />
+            <BestiaryTable state={state.monsters}
+                           selectedColumns={state.selectColumnForm.selectColumns}
+            />
+        </Panel>
+    );
+}
 
 Page.propTypes = {
     state: React.PropTypes.object.isRequired,
