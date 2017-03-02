@@ -39,7 +39,9 @@ watch.on('log', gutil.log); // output build logs to terminal
 function runTask(bundler) {
   return bundler.bundle()
     // log errors if they happen
-        .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+        .on('error', function(err) {
+            console.error('Browserify Error', err.message, err.codeFrame);
+        })
         .pipe(fs.createWriteStream(outputDir + '/index.js'))
         .on('finish', function() { console.log('Ran browserify and wrote output'); });
     // optional, remove if you don't need to buffer file contents

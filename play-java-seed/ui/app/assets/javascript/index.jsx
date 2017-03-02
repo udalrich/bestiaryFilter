@@ -10,9 +10,9 @@ import DataStore from './DataStore.jsx'
 
 const Page = ({state: { monsters }}) => (
     <Panel>
-        <BestiaryTable state={monsters} />
         <ColumnSelect monsters={monsters}
                       store={DataStore} />
+        <BestiaryTable state={monsters} />
     </Panel>
 );
 

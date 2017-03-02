@@ -4,6 +4,13 @@ import { BootstrapTable, TableHeaderColumn }  from 'react-bootstrap-table'
 import 'whatwg-fetch'
 import store from '../DataStore.jsx'
 import ActionCreator from './ActionCreator.jsx'
+import {
+    Button,
+    Popover,
+    Tooltip,
+    OverlayTrigger
+} from 'react-bootstrap'
+import prettify from './prettify.jsx'
 
 function handleErrors(response) {
     if (!response.ok) {
@@ -20,14 +27,40 @@ fetch('/monsterData')
     .then(dummy => console.log('Got monster data, state', store.getState()))
     .catch(err => console.error("Error getting data", err))
 
-function prettify(label) {
-    return label.split(/([A-Z]+[^A-Z]*)/).
-                 join(' ').
-                 replace('_', ' ')
 
-    /* split(/(?=[A-Z]+)/).
-     *              join(' ').
-     *              replace('_', ' ');*/
+
+function dataFormat(cell, row, extraData, rowIdx) {
+    if (cell.startsWith("<link")) {
+        return ( {cell} )
+    } else if (cell.length > 100) {
+        // console.log('row', row, rowIdx);
+        // A probably unique id
+        const id = row.Name + cell.length;
+        const popover = (
+            <Popover title="Full Content"
+                     id={'pop-' + id}>
+                {cell}
+            </Popover>
+        )
+        /* const tooltip = (
+         *     <Tooltip id={'tt' + id}>
+         *         {cell}
+         *     </Tooltip>
+         * )*/
+        return (
+            <OverlayTrigger trigger="click"
+                            id={'over-' + id}
+                            rootClose
+                            placement="bottom"
+                            overlay={popover}
+            >
+                <span>{cell.substring(0, 100)}<Button>...</Button></span>
+            </OverlayTrigger>
+        )
+    } else {
+        return cell;
+    }
+
 }
 
 function buildColumns(headers) {
@@ -38,6 +71,7 @@ function buildColumns(headers) {
             key={label}
             dataField={label}
             dataAlign="left"
+            dataFormat={dataFormat}
             dataSort={true}
         >
             {prettify(label)}

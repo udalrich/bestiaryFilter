@@ -11,7 +11,8 @@ import {
 
 
 const initState = {
-
+    AC: true,
+    CR: false
 }
 
 const reducer = combineForms({
