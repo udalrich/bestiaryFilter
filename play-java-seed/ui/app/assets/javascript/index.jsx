@@ -5,15 +5,21 @@ import {
 } from 'react-bootstrap'
 import BestiaryTable from './bestiaryTable/BestiaryTable.jsx'
 import ColumnSelect from './selectColumns/ColumnSelect.jsx'
+import CollapsingPanel from './collapsingPanel/CollapsingPanel.jsx'
 
 import DataStore from './DataStore.jsx'
+import { Provider } from 'react-redux'
 
 const Page = ({state }) => {
     console.log('state', state);
     return (
         <Panel>
-            <ColumnSelect monsters={state.monsters}
-                          store={DataStore} />
+            <CollapsingPanel header="Select Columns"
+                             state={state.collapsingPanel}
+                             >
+                <ColumnSelect monsters={state.monsters}
+                              store={DataStore} />
+            </CollapsingPanel>
             <BestiaryTable state={state.monsters}
                            selectedColumns={state.selectColumnForm.selectColumns}
             />
@@ -25,8 +31,11 @@ Page.propTypes = {
     state: React.PropTypes.object.isRequired,
 }
 
-const render = () => ReactDom.render(<Page state={DataStore.getState()} />,
-                                     document.getElementById("main"));
+const render = () => ReactDom.render(
+    <Provider store={DataStore}>
+        <Page state={DataStore.getState()} />
+    </Provider>,
+    document.getElementById("main"));
 
 DataStore.subscribe(render);
-render();
+//render();
